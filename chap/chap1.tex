@@ -1,0 +1,294 @@
+\chapter{MRCC {\LaTeX}-Vorlage}
+In diesem Beispieldokument erhalten Sie eine kurze Einf\"uhrung in die Nutzung der Vorlage.
+
+\section{Ben\"otigte Pakete}
+Die Vorlage ben\"otigt nutzt diverse Pakete, die in der Regel bei jeder \LaTeX -Distribution vorhanden sind und automatisch eingebunden werden. Da die Vorlage auf KOMA-Script basiert, sollten Sie dieses auf jeden Fall installiert haben (bei Vollinstallationen i.d.R. immer der Fall -- ansonsten nachtr\"aglich laden).
+
+\section{Parameter}
+Die Vorlage bietet eine Reihe von Parametern, mit deren Hilfe Sie Einstellungen vornehmen k\"onnen. Die Wichtigste betrifft die Art der von Ihnen angefertigten Arbeit. Diese werden im Anschluss an \verb|\documentclass| angegeben.
+\begin{itemize}
+	\item \texttt{seminar}: Vorlage f\"ur eine Seminararbeit.
+	\item \texttt{bachelor}: Vorlage f\"ur eine Bachelorarbeit.
+	\item \texttt{master}: Vorlage f\"ur eine Masterarbeit.
+	\item \texttt{diss}: Vorlage f\"ur eine Dissertation.
+\end{itemize}
+
+Weitere Optionen zur Parametrisierung der Vorlage:
+\begin{itemize}
+	\item \texttt{german}: Vorlage in Deutsch. Wird die Angabe weggelassen, ist die Vorlage englisch. 
+	\item \texttt{twoside}: Zweiseitiges Layout.
+	\item \texttt{bibnum}: Literaturverweise numerisch statt alphanumerisch.
+	\item \texttt{notoc}: Kein Inhaltsverzeichnis.
+	\item \texttt{nolof}: Kein Abbildungsverzeichnis.
+	\item \texttt{nolot}: Kein Tabellenverzeichnis.
+	\item \texttt{nolst}: Kein Quelltext-Verzeichnis.
+	\item \texttt{nomencl}: Abk\"urzungsverzeichnis.
+	\item \texttt{hyperref}: Referenzen k\"onnen angeklickt werden.
+\end{itemize}
+
+\section{Verwendung der Vorlage}
+Nachfolgend wird die Verwendung der Vorlage erl\"autert, um Ihnen die Benutzung ein wenig zu vereinfachen\dots
+
+\subsection{Seminararbeit}
+Die Vorlage f\"ur Seminararbeiten basiert auf \texttt{scrartcl} aus dem Koma-Script-Paket. Eine Seminararbeit enth\"alt \underline{kein} Inhalts-, Abbildungs-, Tabellen- und Quellcodeverzeichnis. Anzugeben sind \textit{author}, \textit{title}, \textit{supervisor}, \textit{bibfiles}. Ein Dokument k\"onnte wie in Listing \ref{lst:seminar} aussehen.
+
+\begin{lstlisting}[caption={Beispiel f\"ur eine Seminararbeit}, label={lst:seminar}]
+\documentclass[german,seminar]{mrcc}
+
+\author{Max Mustermann}
+\title{Meine Seminararbeit}
+\supervisor{Matthias Splieth}
+\bibfiles{bibfilename}
+
+\begin{document}
+	
+	% Inhalt hier...
+
+\end{document}
+\end{lstlisting}
+
+\subsection{Bachelor-/Masterarbeit}
+Bachelor- und Masterarbeit unterschieden sich durch das Titelblatt und durch die genutzten Verzeichnisse sowie einige Kleinigkeiten am Layout von einer Seminararbeit. Sowohl f\"ur eine Bachelor- als auch eine Masterarbeit sind \verb|\author{...}|, \verb|\title{...}|, \verb|\prof{...}| (betreuender Hochschullehrer), \verb|\secondprof{...}| (Zweitgutachter für Masterarbeiten), \verb|\author{supervisor}| (eigentlicher Betreuer), \verb|\bibfiles{...}|, \verb|\abstracten{...}| anzugeben. Ein Beispiel f\"ur ein Dokument ist Listing \ref{lst:bachma} zu entnehmen.
+
+\begin{lstlisting}[caption={Beispiel f\"ur eine Bachelor-/Masterarbeit}, label={lst:bachma}]
+\documentclass[german,master]{mrcc}
+
+\author{Max Mustermann}
+\title{Meine Masterarbeit}
+\prof{Prof. Dr. Klaus Turowski}
+\secondprof{Dr.-Ing. Gamal Kassem}
+\supervisor{Matthias Splieth}
+\bibfiles{bibfilename}
+\abstracten{Kurze englische Zusammenfassung...}
+\acknowledgments{Wenn es denn sein muss artig danke sagen...}
+
+\begin{document}
+	
+	% Inhalt hier...
+
+\end{document}
+\end{lstlisting}
+
+\subsection{Dissertation}
+Die Dissertation unterschiedet sich hinsichtlich einiger Angaben sowie von Layout von einer Bachelor-/Masterarbeit (vgl. Listing \ref{lst:diss}).
+
+\begin{lstlisting}[caption={Beispiel f\"ur eine Dissertation}, label={lst:diss}]
+\documentclass[german,diss]{mrcc}
+
+\author{Max Mustermann}
+\title{Meine Dissertation}
+\bibfiles{bibfilename}
+\abstracten{Kurze englische Zusammenfassung...}
+\reviewer{Prof. Dr. Klaus Turowski\\Prof. Dr. Nick Riviera\\Prof. Dr. James Moriaty}
+\dedication{Meinen lieben Eltern (oder so)}
+\acknowledgments{Bei einer Dissertation darf man auch schon mal "Danke" sagen...}
+
+\begin{document}
+	
+	% Inhalt hier...
+
+\end{document}
+\end{lstlisting}
+
+\subsection{Grafiken und Diagramme}
+Das Positionieren von Grafiken in \LaTeX kann nervenaufreibend sein und ist bei weitem nicht so einfach handhabbar wie in Microsoft Word\footnote{Pfui!}. Eine Grafik wird in \LaTeX wie folgt platziert (das Ergebnis ist in Abbildung \ref{fig:fig1} zu sehen \dots):
+
+\begin{lstlisting}[caption={Beispiel f\"ur eine Grafik}]
+	\begin{figure}[htbp]
+	  \begin{center}
+	    \includegraphics[width=0.2\textwidth]{vlba.pdf}
+	    \caption{Ein Bild.}
+	    \label{fig:fig1}
+	  \end{center}
+	\end{figure}
+\end{lstlisting}
+
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{vlba.pdf}
+    \caption{Ein Bild.}
+    \label{fig:fig1}
+  \end{center}
+\end{figure}
+
+Bei den verwendeten Grafiken sollten Sie darauf achten, dass Sie Vektorgrafiken verwenden -- ist einfach schicker und vermeidet \"Uberraschungen beim Drucken!
+
+F\"ur das Positionieren von Grafiken empfiehlt sich aber, sollten dabei Probleme auftreten, das Heranziehen weiterer Quellen. Einen guten Einstieg bietet \url{http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}.
+
+In \LaTeX lassen k\"onnen zudem mit relativ wenig Aufwand sehr ansprechende Diagramme erstellt werden. Daf\"ur werden in dieser Vorlage die Pakete \verb|tikz| und \verb|pgfplots| verwendet. Zu Beginn konfigurieren Sie die Diagramme mittels \verb|\pgfplotsset{...}| (siehe Listing \ref{lst:tikz}). Am nachfolgenden Beispiel k\"onnen Sie sehen, wie Daten aus zwei CSV-Dateien f\"ur die Erstellung eines Plots genutzt werden:
+
+\pgfplotsset{width=.8\linewidth, height=5cm,every axis/.append style={line width=.5pt},every axis legend/.append style={at={(0.5,1.03)},anchor=south}}
+\begin{lstlisting}[caption={Beispiel f\"ur Diagramm mit tikz/pgfplot}, label={lst:tikz}]
+	\pgfplotsset{width=.8\linewidth, height=5cm,every axis/.append style={line width=.5pt},every axis legend/.append style={at={(0.5,1.03)},anchor=south}} % irgendwo vor dem Diagramm
+	\begin{figure}[!h]
+		\centering
+			\begin{tikzpicture}
+				\begin{axis}[xlabel=Achse 1,ylabel=Achse 2,legend columns=4]
+					\pgfplotstableread[col sep=semicolon]{data1.csv}\table
+					\addplot[smooth,no markers,green] table[] from {\table};
+					\addlegendentry{\textbf{Daten 1}};
+
+					\pgfplotstableread[col sep=semicolon]{data2.csv}\table
+					\addplot[smooth,no markers,red] table[] from {\table};
+					\addlegendentry{\textbf{Data 2}};
+				\end{axis}
+			\end{tikzpicture}
+			\label{fig:fig2}
+			\caption{Ein Diagramm.}
+	\end{figure}
+\end{lstlisting}
+
+\begin{figure}[!ht]
+	\centering
+		\begin{tikzpicture}
+			\begin{axis}[xlabel=Achse 1,ylabel=Achse 2,legend columns=4]
+				\pgfplotstableread[col sep=semicolon]{data1.csv}\table
+				\addplot[smooth,no markers,green] table[] from {\table};
+				\addlegendentry{\textbf{Daten 1}};
+
+				\pgfplotstableread[col sep=semicolon]{data2.csv}\table
+				\addplot[smooth,no markers,red] table[] from {\table};
+				\addlegendentry{\textbf{Daten 2}};
+			\end{axis}
+		\end{tikzpicture}
+		\label{fig:fig2}
+		\caption{Ein Diagramm.}
+\end{figure}
+
+Eine hervorragende Einf\"uhrung zu Diagrammen mit \LaTeX ist unter \url{http://www.bakoma-tex.com/doc/latex/pgfplots/pgfplots.pdf} zu bekommen!
+
+\subsection{Tabellen}
+F\"ur Tabellen gelten die gleichen Dinge wie f\"ur Grafiken -- das Positionieren macht nicht immer Spa\ss. Ein Beispiel f\"ur eine Tabelle in \LaTeX wird nachfolgend gegeben. F\"ur eine detailliertere Einf\"uhrung siehe z.B. \url{http://www2.informatik.hu-berlin.de/~piefel/LaTeX-PS/Archive-2004/V03-tab1/}.
+
+\begin{lstlisting}[caption={Beispiel f\"ur eine Tabelle}]
+\begin{table}[ht]
+	\centering
+  \begin{tabular}{ l | c || r }
+    \hline
+    1 & 2 & 3 \\ \hline
+    4 & 5 & 6 \\ \hline
+    7 & 8 & 9 \\
+    \hline
+  \end{tabular}
+\end{table}
+\end{lstlisting}
+
+Als Ergebnis erh\"alt man dann:
+
+\begin{table}[ht]
+	\centering
+  \begin{tabular}{ l | c || r }
+    \hline
+    1 & 2 & 3 \\ \hline
+    4 & 5 & 6 \\ \hline
+    7 & 8 & 9 \\
+    \hline
+  \end{tabular}
+  \caption{Eine Tabelle}
+\end{table}
+
+F\"ur besonders lange Tabellen bietet \LaTeX das Paket \verb|longtable| an. Damit k\"onnen Tabellen auch per Umbruch \"uber eine Seite hinausgehen. Beispiel:
+\begin{lstlisting}[caption={Beispiel f\"ur longtable}]
+\begin{longtable}{|l|r|c|p{2cm}|}
+\hline
+	links&rechts&zentriert&parbox\\
+\hline
+	Kurzer Text.&Kurzer Text.&Kurzer Text.&Kurzer Text.\\
+\hline
+	Text.&Text.&Text.&Sehr sehr sehr sehr sehr sehr sehr Langer Text, um Umbr\"uche innerhalb einer Zelle zu erzeugen.\\
+\hline
+	Text.&Text.&Text.&\dots\\
+\hline
+\end{longtable}
+\end{lstlisting}
+
+Das Ergebnis sieht dann wie folgt aus:
+
+\begin{longtable}{|l|r|c|p{2cm}|}
+\hline
+	links&rechts&zentriert&parbox\\
+\hline
+	Kurzer Text.&Kurzer Text.&Kurzer Text.&Kurzer Text.\\
+\hline
+	Text.&Text.&Text.&Sehr sehr sehr sehr sehr sehr langer Text, um Umbr\"uche innerhalb einer Zelle zu erzeugen.\\
+\hline
+	Text.&Text.&Text.&\dots\\
+\hline
+\caption{Eine Tabelle mit longtable}
+\end{longtable}
+
+\subsection{Listings}
+Listings werden in der Vorlage \"uber das Paket \verb|listings| eingebunden. Dieses verf\"ugt bereits \"uber Highlighting-Funktionen f\"ur diverse Sprachen (u.a. C, C++, Java, Python, \LaTeX, \dots) und kann beinahe beliebig angepasst werden. Eine Grundkonfiguration f\"ur die Formatierung von Listings ist f\"ur diese Vorlage bereits vorhanden. F\"ur einzelne Sprachen reicht der Aufruf eines Befehls, um ein Listing entsprechend zu formatieren:
+
+\begin{itemize}
+	\item \LaTeX\hfill\verb|\lstsettex|
+	\item SH\hfill\verb|\lstsetconsole|
+	\item Java\hfill\verb|\lstsetjava|
+	\item Scala\hfill\verb|\lstsetscala|
+	\item HTML\hfill\verb|\lstsethtml|
+	\item PHP\hfill\verb|\lstsetphp|
+	\item JavaScript\hfill\verb|\lstsetjavascript|
+	\item Haskell\hfill\verb|\lstsethaskell|
+	\item XML\hfill\verb|\lstsetxml|
+	\item C\#\hfill\verb|\lstsetcsharp|
+	\item F\#\hfill\verb|\lstsetfsharp|
+\end{itemize}
+
+Vor jedem Listing k\"onnen Sie die Einstellungen, die zu Beginn des Dokuments vorgenommen wurden, durch einen der aufgef\"uhrten Befehle neu setzen.
+
+Um die \"Ubersichtlichkeit im \LaTeX-Dokument zu erh\"ohen kann es sinnvoll sein, das Sie ihre Quelltexte in externen Dateien haben und diese nur in ihr TeX-File einbinden. Dies k\"onnen die durch \verb|\lstinputlisting{path_to_filename.c}| erreichen.
+
+Um Listings mit einer Caption und einem Label zu versehen gen\"ugt es, ein Listing wie folgt zu deklarieren: \verb|\begin{lstlisting}[caption={Beschriftung}, label={label}]|.
+
+\subsection{Literaturverzeichnis}
+Das Literaturverzeichnis wird automatisch aus Ihrem BibTeX-File(s) und den daraus zitierten Quellen erzeugt. Zitiert wird mit \verb|\cite{quelle}| bzw. aus B\"uchern mit Angabe der Seitenzahl \verb|\cite[S. 10]{quelle}| (Sie w\"urden ja auch bei einer Aussage, die Sie aus der Bibel \"ubernommen haben, schreiben: siehe Bibel ;)).
+
+Aus \verb|\cite{Addicks2008}| wird dann z. B. ein \cite{Addicks2008} (sofern der BibTeX-Eintrag mit dem Schl\"ussel <Addicks2008> denn auch im BibTeX-File vorhanden ist).
+
+\subsection{Abk\"urzungsverzeichnis}
+Das Abk\"urzungsverzeichnis wird mit Hilfe des Pakets \verb|nomencl| erzeugt, sofern der Parameter \texttt|nomencl| beim Dokument angegeben und ein makeindex ausgef\"uhrt wurde. Mit \verb|\nomenclature{<Kurz>}{<Lang>}| l\"asst sich dann eine neue Abk\"urzung einf\"uhren.
+
+\section{Sonstiges}
+\subsection{Strukturierung der Arbeit}
+Es wird empfohlen, dass Sie Ihre Arbeit in verschiedene Unterdateien aufteilen und diese dann mittels \verb|\input{...}| in der Hauptdatei einbinden. Das erh\"oht nicht nur die \"Ubersichtlichkeit, sondern hilft vor allem bei der Suche nach Fehlern -- die zweifelsohne kommen wird ;)
+
+Beispiel:
+\begin{lstlisting}[caption={Beispiel f\"ur das Strukturieren der Arbeit}]
+\documentclass[german,master]{mrcc}
+
+\author{Max Mustermann}
+\title{Meine Masterarbeit}
+\prof{Prof. Dr. Klaus Turowski}
+\supervisor{Matthias Splieth}
+\bibfiles{bibfilename}
+\abstracten{Kurze englische Zusammenfassung...}
+\acknowledgments{Wenn es denn sein muss artig danke sagen...}
+
+\begin{document}
+	
+	\input{chap/kapitel1.tex}
+	\input{chap/kapitel2.tex}
+	% usw...
+
+\end{document}
+\end{lstlisting}
+
+\subsection{Umlaute}
+Umlaute f\"uhren in \LaTeX gerne zu Kompatibilit\"atsproblemen, weil Umlaute abh\"anging vom Betriebssystem kodiert werden. Am besten kann das Umgangen werden, wenn Umlaute wie folgt angegeben werden: \verb|"A|, \verb|"O|, \verb|"U|, \verb|"a|, \verb|"o| und \verb|"u|.
+
+\subsection{Makefile}
+Der Vorlage liegt ein Makefile bei, mit dem Ihr Dokument kompiliert werden kann. Folgende Optionen stehen zu Verf\"ugung:
+
+\begin{itemize}
+	\item \texttt{make}: Kompiliert das Dokument.
+	\item \texttt{make clean}: Kompiliert und r\"aumt das Verzeichnis auf.
+	\item \texttt{make cleanall}: Kompiliert und r\"aumt noch mehr auf (zus\"atzlich: dvi-, ps-, bmt-Files).
+\end{itemize}
+
+Kleine Hinweise dazu:
+
+\begin{itemize}
+	\item F\"ur Linux-Nutzer: ein \texttt{make} im Terminal gen\"ugt f\"ur das Kompilieren.
+	\item F\"ur Mac-Nutzer: einfach das Makefile \"uber das Terminal ausf\"uhren. Daf\"ur m\"ussen Sie jedoch XCode installieren\footnote{Kostenlos \"uber den AppStore}. In XCode w\"ahlen Sie dann unter \textit{XCode->Preferences->Downloads} die Command Line Tools aus und installieren diese. Anschlie{\ss}end k\"onnen Sie \texttt{make} nutzen.
+	\item F\"ur Windows-Nutzer: f\"ur die Nutzung des Makefiles k\"onnen Sie z.B. auf cygwin\footnote{\url{http://www.cygwin.com/}} zur\"uckgreifen.
+\end{itemize}
