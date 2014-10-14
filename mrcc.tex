@@ -13,7 +13,7 @@
 % Miscanallous Options                                                                                    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \graphicspath{{img/}} % sets Path to figure-folder
-%\pgfplotsset{compat=1.6} % pgfplot-fix DOES NOT WORK WITH MACTEX!!
+%\pgfplotsset{compat=1.6} % pgfplot-fix DOES NOT WORK WITH MACTEX
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Styling etc                                                                                             %
@@ -21,19 +21,19 @@
 \input{tex/lststyles}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Author stuff starts here!                                                                               %
+% Author-related information start here                                                                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \author{Max Mustermann}
 \title{Titel der Arbeit}
 \bibfiles{literature}
-\supervisor{Matthias Splieth, M. Sc.}
-\prof{Prof. Dr. Klaus Turowski}
-\secondprof{Dr.-Ing. Gamal Kassem}
+\supervisor{Michael Mustermann}
+\prof{Prof. Dr. ABC}
+\secondprof{Prof. Dr. DEF}
 \abstracten{Your \underline{english} abstract\dots}
 \acknowledgments{Danke an meinen tollen Betreuer!}
 \dedication{Meinen Eltern\dots} %only for diss
 \birthday{01.01.1980} % only for diss
-\placeofbirth{Lummerland} % only for diss
+\placeofbirth{Musterland} % only for diss
 \reviewer{Prof. A\\ Prof. B} % only for diss
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -43,7 +43,6 @@
 	\lstsettex
 	\input{chap/chap1.tex}
 	\input{chap/chap2.tex}
-	\renewcommand{\chaptermark}[1]{\markboth{\textsc{\thechapter.\ #1}}{}} % fix for header
 	\begin{appendix}
 		\chapter{Ein Anhang}
 		\dots{}

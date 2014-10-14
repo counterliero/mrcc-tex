@@ -682,5 +682,8 @@
 
 \if@seminar
 \else
-	\input{tex/styling.tex}
+   \if@diss
+	\else
+	    \input{tex/styling.tex}
+	\fi
 \fi
